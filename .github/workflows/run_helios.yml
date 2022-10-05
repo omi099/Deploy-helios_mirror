@@ -1,1 +1,21 @@
-h:) 
+~}name: helios-mirror
+
+on:
+
+  push:
+
+  workflow_dispatch:
+
+jobs:
+
+  userbot:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Running helios in github action
+
+        timeout-minutes: 180
+        continue-on-error: true
+        run: git clone https://github.com/arshsisodiya/helios-mirror;cd helios*;pip3 install -r requirements.txt;wget -O .config.env ${{ secrets.CONFIG }};wget -O token.pickle ${{ secrets.TOKEN }};bash start.sh
